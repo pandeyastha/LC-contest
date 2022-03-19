@@ -1,0 +1,21 @@
+int halveArray(vector<int>& nums) {
+        int count=0;
+        double sum=0;
+        priority_queue<double>pq;
+        for(auto x:nums)
+        {
+            pq.push(x);
+            sum+=x;
+        }
+        double half=sum/2.0;
+        while(1)
+        {
+            if(sum<=half) break;
+            double reject=pq.top();
+            pq.pop();
+            sum=sum-reject/2.0;
+            
+            pq.push(reject/2.0);
+            count++;
+        }
+        return count;
